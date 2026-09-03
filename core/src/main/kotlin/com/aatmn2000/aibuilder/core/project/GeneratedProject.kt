@@ -1,5 +1,7 @@
 package com.aatmn2000.aibuilder.core.project
 
+import kotlinx.serialization.Serializable
+
 /** Lifecycle state of a project inside the app. */
 enum class ProjectStatus {
     DRAFT,
@@ -12,6 +14,7 @@ enum class ProjectStatus {
  * One recorded change to a project: initial generation, an AI repair, or an
  * imported ZIP. This is the version history the user can inspect.
  */
+@Serializable
 data class EditRecord(
     val timestamp: String,
     val reason: String,

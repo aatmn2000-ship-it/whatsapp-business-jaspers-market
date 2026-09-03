@@ -18,6 +18,7 @@ object ProjectFactory {
         modules: List<ModuleSpec>,
         entryPoint: String,
         language: String = ProjectManifest.LANGUAGE_PYTHON,
+        domain: String = "",
         storage: StorageSpec? = StorageSpec()
     ): GeneratedProject {
         val now = Instant.now().toString()
@@ -27,6 +28,7 @@ object ProjectFactory {
             description = description,
             entryPoint = entryPoint,
             language = language,
+            domain = domain,
             modules = modules,
             build = BuildSpec(
                 requirements = listOf("python>=3.10"),

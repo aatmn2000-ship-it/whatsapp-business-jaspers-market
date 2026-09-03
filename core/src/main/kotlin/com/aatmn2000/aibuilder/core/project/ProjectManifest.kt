@@ -18,6 +18,8 @@ data class ProjectManifest(
     val description: String = "",
     val version: String = "0.1.0",
     val language: String = LANGUAGE_PYTHON,
+    /** Application domain key (e.g. "clinic_appointments") used by the agents. */
+    val domain: String = "",
     val platform: List<String> = listOf("local"),
     val entryPoint: String,
     val modules: List<ModuleSpec> = emptyList(),

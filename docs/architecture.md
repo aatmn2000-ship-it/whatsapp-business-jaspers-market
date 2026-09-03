@@ -105,6 +105,7 @@ issue lists and the number of repair attempts. Progress is streamed as
 | `name` / `description` | Human-readable identity. |
 | `version` | Semver of the project itself. |
 | `language` | `python` in V1. |
+| `domain` | Application domain key (e.g. `clinic_appointments`) that pins the entity/service names used by the agents — survives import so modifications target the right modules. |
 | `platform` | Target platforms, e.g. `["local"]`, `["android"]`. |
 | `entryPoint` | File to run, e.g. `app/main.py`. |
 | `modules[]` | `name`, `path`, `purpose` per module. |

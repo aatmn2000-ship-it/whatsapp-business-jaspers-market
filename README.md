@@ -36,9 +36,26 @@ Share / Save / Import ──► AI continues development on the same project
 
 | Path | Description |
 |---|---|
-| `app/` | The Android application (Kotlin + Jetpack Compose). The control center: chat with the AI, watch the build, browse code, share/import ZIPs. |
+| `app/` | The Android application (Kotlin + Jetpack Compose). The control center: describe with text or voice, watch the agents and pipeline live, browse code, share/import ZIPs. |
 | `core/` | Pure Kotlin (JVM) library with all product logic: project model, `project.json` codec, ZIP packaging/import, the AI gateway, the agent swarm and the build pipeline. Fully unit-testable, no Android dependency. |
 | `docs/` | Architecture and roadmap documentation. |
+| `.github/workflows/` | CI: runs the core JVM test suite on every push. |
+
+## Status (V1)
+
+| Area | State |
+|---|---|
+| Agent swarm (13 agents) + Orchestrator with explainable plans | ✅ implemented |
+| AI gateway (mock / Ollama / OpenAI-compatible) with fallback | ✅ implemented |
+| Python code generation (stdlib-only, local-first, SQLite) | ✅ implemented |
+| Static compile + test validation, cross-file import resolution | ✅ implemented |
+| Automatic AI debugging, bounded attempts, targeted repairs | ✅ implemented |
+| `project.json` (schema v1) + ZIP package format | ✅ implemented |
+| Safe import (zip-bomb budgets, path-traversal guard, secret scan) | ✅ implemented |
+| Share via Android share sheet, import via Storage Access Framework | ✅ implemented |
+| Voice input (system speech recognition) | ✅ implemented |
+| Encrypted storage for API keys, version history per project | ✅ implemented |
+| Multi-language agents (JS/Java/C++/Kotlin) | 🚧 stubbed for V2 |
 
 ## How it works
 
@@ -152,6 +169,19 @@ Requirements: Android Studio (Ladybug or newer) or JDK 17 + Android SDK 35.
 
 Open the project in Android Studio and press **Run**, or install the built APK
 on a device with Android 8.0 (API 26) or newer.
+
+> **Gradle wrapper note:** the binary `gradle/wrapper/gradle-wrapper.jar` is
+> not committed. Open the project in Android Studio (it syncs with the pinned
+> version from `gradle-wrapper.properties`), or on a machine with Gradle 8.10+
+> installed run `gradle wrapper` once to materialize the jar.
+
+## Development workflow
+
+The project is developed directly on GitHub: work is committed at feature
+boundaries and pushed to the working branch regularly during development, so
+the repository always reflects the latest state. CI runs the pure-JVM core
+test suite (`./gradlew :core:test`) on every push — the entire agent swarm,
+pipeline, zip import/export and security logic is covered there.
 
 ## Roadmap
 
