@@ -1,0 +1,36 @@
+# Gradle
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# Android / IntelliJ
+*.iml
+.idea/
+local.properties
+.cxx/
+captures/
+.externalNativeBuild/
+.kotlin/
+*.hprof
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets — never commit credentials
+.env
+.env.*
+*.pem
+*.key
+*.jks
+keystore.properties
+
+# Build artifacts
+dist/
+*.apk
+*.aab
+*.ap_
+
+# Local project data
+projects/
+data/
